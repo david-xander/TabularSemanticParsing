@@ -397,7 +397,7 @@ class EncoderDecoderLFramework(LFramework):
                     ptr_input_tokens, ptr_input_values, num_excluded_tables, num_excluded_fields = \
                         get_table_aware_transformer_encoder_inputs(
                             exp.text_ptr_values, exp.text_tokens, schema_features, self.tu)
-                    assert(len(ptr_input_tokens) <= self.tu.tokenizer.max_len)
+                    assert(len(ptr_input_tokens) <= self.tu.tokenizer.model_max_length)
                     if num_excluded_fields > 0:
                         print('Warning: training input truncated')
                     num_included_nodes = schema_graph.get_num_perceived_nodes(tables) + 1 \
