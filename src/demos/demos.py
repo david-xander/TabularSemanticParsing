@@ -81,7 +81,7 @@ class Text2SQLWrapper(object):
                 checkpoint_path = os.path.join(model_dir, 'model-best.16.tar')
                 sps[i].schema_graphs = SchemaGraphs()
                 sps[i].load_checkpoint(checkpoint_path)
-                sps[i].cuda()
+                #sps[i].cuda()
                 sps[i].eval()
             self.semantic_parsers = sps
             self.model_ensemble = [sp.mdl for sp in sps]

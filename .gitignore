@@ -116,3 +116,4 @@ temp.txt
 *.iml
 .idea
 .DS_Store
+*.tar

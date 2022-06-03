@@ -32,9 +32,9 @@ import torch
 # if not args.data_parallel:
 #     torch.cuda.set_device('cuda:{}'.format(args.gpu))
 torch.manual_seed(args.seed)
-torch.cuda.manual_seed_all(args.seed)
+#torch.cuda.manual_seed_all(args.seed)
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 
 # Set model ID
 args.model_id = utils.model_index[args.model]
@@ -162,7 +162,7 @@ def ensemble():
         checkpoint_path = os.path.join(model_dir, 'model-best.16.tar')
         sps[i].schema_graphs = dataset['schema']
         sps[i].load_checkpoint(checkpoint_path)
-        sps[i].cuda()
+        #sps[i].cuda()
         sps[i].eval()
 
     pred_restored_cache = sps[0].load_pred_restored_cache()
@@ -387,7 +387,7 @@ def run_experiment(args):
             else:
                 raise NotImplementedError
 
-            sp.cuda()
+            #sp.cuda()
             if args.train:
                 train(sp)
             elif args.inference:
